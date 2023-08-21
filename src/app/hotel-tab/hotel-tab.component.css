@@ -1,0 +1,22 @@
+.main-container{
+    width: auto;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 100fr 100fr 1fr 100fr;
+    margin: 5px;
+}
+.picture{
+    border-radius: 15px;
+}
+.vertical-line {
+    width: 1px;
+    background-color: rgba(154, 152, 152, 0.642);;
+    height: 100%; /* Dowolna wysokość, którą chcesz dla kreski */
+    margin: 0px; /* Dowolne marginesy wokół kreski */
+  }
+
+.info-text{
+    font-size: 8px;
+    text-align: left;
+    margin-left: 12px;
+}

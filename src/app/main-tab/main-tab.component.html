@@ -1,0 +1,10 @@
+<div class="main-holder">
+    <div class="filter">
+      filter
+    </div>
+    <div class="hotel-box">
+      <button class="hotel" *ngFor="let hotel of hotels" >
+        <app-hotel-tab  [hotel]="hotel"></app-hotel-tab>
+      </button>
+    </div>
+</div>
