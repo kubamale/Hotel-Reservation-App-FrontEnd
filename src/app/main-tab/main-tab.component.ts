@@ -10,13 +10,21 @@ import { HotelModel } from 'src/shared/hotel';
 export class MainTabComponent implements OnInit {
   hotels : HotelModel[] = []; 
   constructor(private http: HttpClient) { }
-
+  chosenHotel!: HotelModel;
+  isHotelSelected: boolean = false;
 
   ngOnInit(): void {
     this.http.get('http://localhost:8080/hotels').subscribe(data => {
       this.hotels = data as HotelModel[];
       console.log(this.hotels);
     });
+  }
+
+  click(hotel: HotelModel){
+    console.log("click");
+    this.chosenHotel = hotel;
+    this.isHotelSelected = true;
+    
   }
 
 }

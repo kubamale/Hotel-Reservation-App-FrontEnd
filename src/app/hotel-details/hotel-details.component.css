@@ -1,0 +1,52 @@
+.main-holder{
+    
+    width: 70%;
+    border: 1px solid black;
+    height:fit-content;
+    margin: auto;
+    margin-top: 10px;
+   display: flex;
+}
+
+.data-holder{
+    width: 100%;
+    border: 1px solid blue;
+    height: fit-content;
+}
+
+.sidebar{
+    width: 20%;
+    height: 100vh;
+    border: 1px solid red;
+}
+
+.details-holder{
+    width: 80%;
+}
+
+.pictures{
+    
+    width: 90%;
+    margin: auto; 
+    display: block; 
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+.amenities-holder{
+    width: 100%;
+    border: 1px solid green;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.amenities{
+    width: fit-content;
+    background-color: rgba(169, 169, 169, 0.737);
+    border-radius: 2px;
+    margin: auto;
+    font-size: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

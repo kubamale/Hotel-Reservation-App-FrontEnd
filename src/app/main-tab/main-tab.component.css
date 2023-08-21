@@ -17,10 +17,13 @@
 
     height:fit-content;
 }
-.hotel{
+.hotel-button{
     margin-top: 5px;
-    background-color: transparent;
     width: 100%;
     border: 1px solid rgba(154, 152, 152, 0.642);
     border-radius: 15px;
+}
+
+.hotel-button:hover{
+    cursor: pointer;
 }

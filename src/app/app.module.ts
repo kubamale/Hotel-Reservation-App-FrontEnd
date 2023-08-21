@@ -8,13 +8,15 @@ import { HotelTabComponent } from './hotel-tab/hotel-tab.component';
 import { MainTabComponent } from './main-tab/main-tab.component';
 import { FilterTabComponent } from './filter-tab/filter-tab.component';
 import {HttpClientModule} from '@angular/common/http';
+import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HotelTabComponent,
     MainTabComponent,
-    FilterTabComponent
+    FilterTabComponent,
+    HotelDetailsComponent
   ],
   imports: [
     BrowserModule,

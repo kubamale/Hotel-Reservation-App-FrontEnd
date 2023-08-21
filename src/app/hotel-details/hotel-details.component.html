@@ -1,0 +1,23 @@
+<div class="main-holder">
+    <div class="sidebar">
+            <div class="search-bar"></div>
+            <div class="map"></div>
+    </div>
+
+    <div class="details-holder">
+        <div class="data-holder">
+        
+            
+            <img class="pictures" [src]="hotel.picURL.at(0)" alt="zdjęcia">
+            
+            <div class="amenities-holder">
+                <div class="amenities" *ngFor="let amenitie of hotel.amenities">{{amenitie}}</div>
+            </div>
+            <div class="description">
+                <p>{{hotel.description}}</p>
+            </div>
+        </div>
+        <div class="data-holder"></div>
+    </div>
+    
+</div>

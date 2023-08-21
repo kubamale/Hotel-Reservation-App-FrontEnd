@@ -19,4 +19,6 @@
     font-size: 8px;
     text-align: left;
     margin-left: 12px;
+    line-height: 0.5;
+    white-space: normal;
 }
