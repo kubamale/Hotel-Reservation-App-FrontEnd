@@ -1,0 +1,19 @@
+<h1>{{hotel.name}}</h1>
+<div>
+
+    <img class="picture" [src]="hotel.picURL.at(index)">
+
+    <a class="prev" (click)="priviousSlide()">&#10094;</a>
+    <a class="next" (click)="nextSlide()">&#10095;</a>
+    <div class="picture-box">
+        <ng-container *ngFor="let pic of hotel.picURL; let i = index">
+            <img
+                class="picture-box-img"
+                [src]="pic"
+                [ngClass]="{'highlighted': i === index}"
+                (click)="changeImage(i)"
+                *ngIf="indexesToDisplay.includes(i)"
+            >
+        </ng-container>
+    </div>
+</div>

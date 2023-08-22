@@ -8,8 +8,8 @@
         <div class="data-holder">
         
             
-            <img class="pictures" [src]="hotel.picURL.at(0)" alt="zdjęcia">
-            
+            <!-- <img class="pictures" [src]="hotel.picURL.at(0)" alt="zdjęcia"> -->
+            <app-image-slider [hotel]="hotel"></app-image-slider>
             <div class="amenities-holder">
                 <div class="amenities" *ngFor="let amenitie of hotel.amenities">{{amenitie}}</div>
             </div>
@@ -17,7 +17,12 @@
                 <p>{{hotel.description}}</p>
             </div>
         </div>
-        <div class="data-holder"></div>
+        <div class="data-holder">
+            <!-- <app-image-slider [imgCollection]="hotel.picURL"></app-image-slider> -->
+        </div>
+        
     </div>
     
 </div>
+
+

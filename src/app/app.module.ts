@@ -9,6 +9,9 @@ import { MainTabComponent } from './main-tab/main-tab.component';
 import { FilterTabComponent } from './filter-tab/filter-tab.component';
 import {HttpClientModule} from '@angular/common/http';
 import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
+import { ImageSliderComponent } from './image-slider/image-slider.component';
+
+
 
 @NgModule({
   declarations: [
@@ -16,14 +19,16 @@ import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
     HotelTabComponent,
     MainTabComponent,
     FilterTabComponent,
-    HotelDetailsComponent
+    HotelDetailsComponent,
+    ImageSliderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
