@@ -13,6 +13,7 @@ import { ImageSliderComponent } from './image-slider/image-slider.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { ImageSliderComponent } from './image-slider/image-slider.component';
     FilterTabComponent,
     HotelDetailsComponent,
     ImageSliderComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,7 @@ import { ImageSliderComponent } from './image-slider/image-slider.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     HttpClientModule,
+
 
   ],
   providers: [],
