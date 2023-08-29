@@ -1,0 +1,13 @@
+form{
+    width: 500px;
+    background-color: rgb(183, 183, 183);
+    padding: 20px;
+}
+
+mat-form-field{
+    margin: 5px;
+}
+
+.Submit-Button{
+    background-color: blue;
+}

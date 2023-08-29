@@ -10,7 +10,11 @@ import { FilterTabComponent } from './filter-tab/filter-tab.component';
 import {HttpClientModule} from '@angular/common/http';
 import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
-
+import { NavbarComponent } from './navbar/navbar.component';
+import { HotleCreationFormComponent } from './hotle-creation-form/hotle-creation-form.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -20,7 +24,9 @@ import { ImageSliderComponent } from './image-slider/image-slider.component';
     MainTabComponent,
     FilterTabComponent,
     HotelDetailsComponent,
-    ImageSliderComponent
+    ImageSliderComponent,
+    NavbarComponent,
+    HotleCreationFormComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +34,9 @@ import { ImageSliderComponent } from './image-slider/image-slider.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
 
   ],
   providers: [],
