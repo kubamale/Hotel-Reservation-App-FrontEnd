@@ -1,50 +1,89 @@
-
-<form>
-    <h1>Add Your Hotel</h1>
-    <mat-form-field>
-        <mat-label>Hotel Name</mat-label>
-        <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Country</mat-label>
-        <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>City</mat-label>
-        <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Postal Code</mat-label>
-        <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Street</mat-label>
-        <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Street Number</mat-label>
-        <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Phone</mat-label>
-        <input matInput type="tel">
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput type="email">
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>PicturecURL</mat-label>
-        <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Amenities</mat-label>
-        <input matInput>
-    </mat-form-field>
-    <mat-form-field>
+<form [formGroup]="hotelForm" (ngSubmit)="submit()">
+    <div class="basic-info">
+        <mat-form-field>
+            <mat-label>Hotel Name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Country</mat-label>
+            <input matInput formControlName="country">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>City</mat-label>
+            <input matInput formControlName="city">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Postal Code</mat-label>
+            <input matInput formControlName="postalCode">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Street</mat-label>
+            <input matInput formControlName="street">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Street Number</mat-label>
+            <input matInput formControlName="streetNumber">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Phone</mat-label>
+            <input matInput type="tel" formControlName="phoneNumber">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email">
+        </mat-form-field>
+    </div>
+    <mat-form-field class="additional-info">
         <mat-label>Description</mat-label>
-        <textarea matInput></textarea>
+        <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
-    <button class="Submit-Button"  mat-button color="primary">Submit</button>
-   
-</form>
+    <mat-form-field class="additional-info">
+        <mat-label>Pictures</mat-label>
+        <mat-chip-grid #picChip aria-label="Enter picture URL">
+            <mat-chip-row *ngFor="let pic of picURL"
+                        (removed)="removePic(pic)"
+                        [editable]="true"
+                        (edited)="editPic(pic, $event)"
+                        [aria-description]="'press enter to edit ' + pic">
+                        {{pic}}
+                <button matChipRemove [attr.aria-label]="'remove ' + pic">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-chip-row>
+            <input placeholder="New Picture.."
+                [matChipInputFor]="picChip"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="addPic($event)"/>
+        </mat-chip-grid>
+    </mat-form-field>
+    <mat-form-field class="additional-info">
+        <mat-label>Amenities</mat-label>
+        <mat-chip-grid #chipGrid aria-label="Enter amenities">
+            <mat-chip-row *ngFor="let amenitie of amenities"
+                        (removed)="remove(amenitie)"
+                        [editable]="true"
+                        (edited)="edit(amenitie, $event)"
+                        [aria-description]="'press enter to edit ' + amenitie">
+                        {{amenitie}}
+                <button matChipRemove [attr.aria-label]="'remove ' + amenitie">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-chip-row>
+            <input placeholder="New amenitie.."
+                [matChipInputFor]="chipGrid"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="add($event)"/>
+        </mat-chip-grid>
+    
+</mat-form-field>
+    <button class="add-hotel-button" type="submit" >Create Hotel</button>
+  </form>
+
+  
+  
+  
+  
+  
+  

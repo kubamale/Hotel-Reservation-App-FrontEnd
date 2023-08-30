@@ -1,13 +1,38 @@
 form{
     width: 500px;
     background-color: rgb(183, 183, 183);
-    padding: 20px;
+    padding: 5px;
 }
 
 mat-form-field{
     margin: 5px;
+    width: 240px;
+    display: flex;
 }
 
 .Submit-Button{
     background-color: blue;
 }
+
+
+
+.basic-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+}
+
+.additional-info{
+    width: auto;
+   
+}
+
+.add-hotel-button{
+    width: 490px;
+    margin: 5px;
+    height: 60px;
+    background-color: rgb(99, 5, 106);
+    color: white;
+    font-size: 40px;
+    
+}
+
