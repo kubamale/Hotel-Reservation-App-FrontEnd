@@ -1,4 +1,4 @@
-<div class="main-holder">
+<div class="main-holder" *ngIf="hotel">
     <div class="sidebar">
             <div class="search-bar"></div>
             <div class="map"></div>
@@ -6,9 +6,6 @@
 
     <div class="details-holder">
         <div class="data-holder">
-        
-            
-            <!-- <img class="pictures" [src]="hotel.picURL.at(0)" alt="zdjęcia"> -->
             <app-image-slider [hotel]="hotel"></app-image-slider>
             <div class="amenities-holder">
                 <div class="amenities" *ngFor="let amenitie of hotel.amenities">{{amenitie}}</div>
@@ -18,7 +15,6 @@
             </div>
         </div>
         <div class="data-holder">
-            <!-- <app-image-slider [imgCollection]="hotel.picURL"></app-image-slider> -->
         </div>
         
     </div>

@@ -1,0 +1,5 @@
+<button (click)="toggleVisibility()">Add Hotel</button>
+
+<div class="hotel-form" [hidden]="!isVisible">
+    <app-hotle-creation-form></app-hotle-creation-form>
+</div>

@@ -1,4 +1,5 @@
 <form [formGroup]="hotelForm" (ngSubmit)="submit()">
+    <button class="close-button" (click)="closeForm()">&#x2A37;</button>
     <div class="basic-info">
         <mat-form-field>
             <mat-label>Hotel Name</mat-label>

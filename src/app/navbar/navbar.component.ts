@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,11 +9,21 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class NavbarComponent {
 
   @Output() searchForAvailableHotels = new EventEmitter<{from: String, to:String}>();
-
+  constructor(private router: Router) { }
 
 
   submit(from: String, to: String) {
-    console.log(from, to);
-      this.searchForAvailableHotels.emit({from, to});
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        from: from,
+        to: to
+      }
+    }
+    console.log(navigationExtras);
+    this.router.navigate([''], navigationExtras);
+  }
+
+  navigateToUserProfile(): void{
+      this.router.navigate(['/profile']);
   }
 }

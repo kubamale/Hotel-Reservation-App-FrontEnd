@@ -4,3 +4,17 @@
     color: white;
 }
 
+.hotel-form{
+
+position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)  scale(0.5);
+  z-index: 1000; /* Dostosuj wartość z-index wg potrzeb */
+}
+
+.main{
+    width: 100%;
+    height: fit-content;
+    background-color: rgba(170, 153, 195, 0.854);
+}

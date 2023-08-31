@@ -1,5 +1,7 @@
-<app-navbar (searchForAvailableHotels)="searchForAvailableHotels($event.from, $event.to)"></app-navbar>
+<div class="main">
+    <app-navbar (searchForAvailableHotels)="searchForAvailableHotels($event.from, $event.to)"></app-navbar>
 
-<app-main-tab ></app-main-tab>
+    <router-outlet></router-outlet>
 
-<app-hotle-creation-form></app-hotle-creation-form>
+
+</div>

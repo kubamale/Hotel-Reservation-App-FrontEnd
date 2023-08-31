@@ -3,11 +3,8 @@
       filter
     </div>
     <div class="hotel-box">
-      <button class="hotel-button"  *ngFor="let hotel of hotels" (click)="click(hotel)">
+      <button class="hotel-button"  *ngFor="let hotel of hotels" (click)=" showHotelDetails(hotel.id)">
         <app-hotel-tab  [hotel]="hotel"></app-hotel-tab>
       </button>
     </div>
-</div>
-<div class="hotel" *ngIf="isHotelSelected">
-  <app-hotel-details [hotel]="chosenHotel"></app-hotel-details>
 </div>

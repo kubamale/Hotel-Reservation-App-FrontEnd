@@ -65,6 +65,9 @@ export class HotleCreationFormComponent implements OnInit {
     // Clear the input value
     event.chipInput!.clear();
   }
+  closeForm(): void {
+    
+  }
 
   removePic(pic: string): void {
     const index = this.picURL.indexOf(pic);

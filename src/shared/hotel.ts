@@ -1,4 +1,5 @@
 export interface HotelModel{
+    id: number;
     country:string;
     city:string;
     postalCode:string;
