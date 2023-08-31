@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MainTabComponent } from './main-tab/main-tab.component';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'hotel-frontend';
+
+@ViewChild(MainTabComponent) 
+mainTab!: MainTabComponent;
+
+  searchForAvailableHotels(from:  String, to: String) {
+    console.log('Rodzic otrzymał zapytanie:', from, to);
+    // Tu możesz wywołać swoją funkcję obsługującą wyszukiwanie hoteli
+    this.mainTab.getAvailableHotels(from, to);
+  }
+
+
+
 }
