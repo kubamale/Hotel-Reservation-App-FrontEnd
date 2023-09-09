@@ -55,3 +55,7 @@ mat-form-field{
     cursor: pointer;
 }
 
+.add-hotel-button:hover{
+    cursor: pointer;
+}
+

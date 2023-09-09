@@ -19,6 +19,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
 
 
 @NgModule({
@@ -31,7 +36,9 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ImageSliderComponent,
     NavbarComponent,
     HotleCreationFormComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    LoginPageComponent,
+    RegistrationPageComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +51,10 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     MatButtonModule,
     ReactiveFormsModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSnackBarModule
 
 
   ],

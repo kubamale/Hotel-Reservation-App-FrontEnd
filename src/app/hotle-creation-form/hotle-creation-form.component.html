@@ -1,5 +1,5 @@
 <form [formGroup]="hotelForm" (ngSubmit)="submit()">
-    <button class="close-button" (click)="closeForm()">&#x2A37;</button>
+    <button class="close-button" type="button" (click)="closeForm()">&#x2A37;</button>
     <div class="basic-info">
         <mat-form-field>
             <mat-label>Hotel Name</mat-label>
@@ -78,9 +78,11 @@
                 (matChipInputTokenEnd)="add($event)"/>
         </mat-chip-grid>
     
-</mat-form-field>
+    </mat-form-field>
     <button class="add-hotel-button" type="submit" >Create Hotel</button>
   </form>
+
+  
 
   
   

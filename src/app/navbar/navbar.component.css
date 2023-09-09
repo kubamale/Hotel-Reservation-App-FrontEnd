@@ -1,5 +1,77 @@
 .navbar{
     background-color: rgba(174, 54, 203, 0.849);
-    height: 40px;
+    height: fit-content;
     color: white;
+    padding: 10px;
+
+}
+
+.holder{
+    width: 75%;
+    margin: auto;
+}
+
+.top-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 10px;
+    margin-bottom: 50px;
+}
+
+.name{
+    font-size: 35px;
+}
+
+.buttons{
+    margin-left: auto;
+}
+
+.credentials{
+    height: 35px;
+    margin-right: 8px;
+    background-color: white;
+    color: rgb(188, 49, 215);
+    border: 0px;
+    border-radius: 3px;
+    border-color: rgba(229, 166, 248, 0.781);
+    font-size: 18px;
+}
+
+.info{
+    width: fit-content;
+    position: center;
+    margin: 0 auto;
+}
+
+.info-text{
+    font-size: 30px;
+    margin-bottom:10px;
+}
+
+.details{
+    height: fit-content;
+    width: fit-content;
+    padding: 3px;
+    background-color:  rgb(140, 40, 165);
+    border-radius: 3px;
+    
+}
+
+.details-input{
+    margin: 2px;
+    height: 35px;
+}
+
+input[type=date] {
+    text-align: right;
+  }
+  
+input[type="date"]:before {
+    color: rgb(66, 65, 65);
+    content: attr(placeholder) !important;
+    margin-right: 0.5em;
+  }
+
+mat-form-firld{
+    transform:scale(50% 50%);
 }

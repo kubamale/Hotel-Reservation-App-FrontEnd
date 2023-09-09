@@ -1,7 +1,5 @@
 .navbar{
-    background-color: rgb(46, 168, 95);
-    height: 40px;
-    color: white;
+  position: sticky;
 }
 
 .hotel-form{
@@ -16,5 +14,5 @@ position: fixed;
 .main{
     width: 100%;
     height: fit-content;
-    background-color: rgba(170, 153, 195, 0.854);
+    background-color: rgb(255, 255, 255);
 }

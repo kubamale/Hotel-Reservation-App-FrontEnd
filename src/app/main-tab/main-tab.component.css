@@ -1,12 +1,12 @@
 .main-holder{
     position: center;
-    width: 55%;
+    width: 75%;
     margin: auto;
     margin-top: 10px;
-    border: 1px solid black;
+
     height:100vh;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
     column-gap: 5px;
 }
 .filter{
@@ -14,14 +14,15 @@
     height: 100%;
 }
 .hotel-box{
-
     height:fit-content;
 }
 .hotel-button{
-    margin-top: 5px;
+    margin-top: 10px;
     width: 100%;
-    border: 1px solid rgba(154, 152, 152, 0.642);
+    background-color: white;
+    border: 2px solid rgb(214, 25, 243);
     border-radius: 15px;
+    box-shadow: 3px 3px rgba(192, 78, 241, 0.571);
 }
 
 .hotel-button:hover{

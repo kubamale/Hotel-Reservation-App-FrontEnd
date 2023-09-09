@@ -12,4 +12,7 @@ export class UserProfileComponent {
     this.isVisible =!this.isVisible;
   }
 
+  closeForm(): void {
+    this.isVisible = false;
+  }
 }

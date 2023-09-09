@@ -8,7 +8,8 @@
         <div class="data-holder">
             <app-image-slider [hotel]="hotel"></app-image-slider>
             <div class="amenities-holder">
-                <div class="amenities" *ngFor="let amenitie of hotel.amenities">{{amenitie}}</div>
+                <div class="amenities" *ngFor="let amenitie of hotel.amenities">
+                    {{amenitie}}</div>
             </div>
             <div class="description">
                 <p>{{hotel.description}}</p>

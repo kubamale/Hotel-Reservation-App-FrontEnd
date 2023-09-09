@@ -8,6 +8,8 @@ import {NgFor} from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-hotle-creation-form',
@@ -16,6 +18,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HotleCreationFormComponent implements OnInit {
 
+  @Output() newItemEvent = new EventEmitter();
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   amenities: string[] = [];
@@ -23,7 +26,7 @@ export class HotleCreationFormComponent implements OnInit {
   hotelForm!: FormGroup;
   announcer = inject(LiveAnnouncer);
 
-  constructor(private formBuilder: FormBuilder,private http: HttpClient) { }
+  constructor(private formBuilder: FormBuilder,private http: HttpClient, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.hotelForm = this.formBuilder.group({
@@ -42,6 +45,7 @@ export class HotleCreationFormComponent implements OnInit {
   hotel!: HotelModel ;
 
   submit(): void {
+    console.log('Submit');
     if (this.hotelForm.valid) {
       const newHotel: HotelModel = this.hotelForm.value;
       newHotel.picURL = this.picURL;
@@ -50,9 +54,16 @@ export class HotleCreationFormComponent implements OnInit {
       this.http.post<HotelModel>('http://localhost:8080/hotels', newHotel).subscribe(res =>{
         const hotel: HotelModel = res;
       });
+      this.openSnackBar('Hotel added successfully','CLOSE' );
+    }
+    else{
+      console.log('error');
     }
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
 
   addPic(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -66,7 +77,8 @@ export class HotleCreationFormComponent implements OnInit {
     event.chipInput!.clear();
   }
   closeForm(): void {
-    
+    console.log('Closing');
+    this.newItemEvent.emit();
   }
 
   removePic(pic: string): void {
