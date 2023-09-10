@@ -18,4 +18,8 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
+  login(): void {
+    console.log(this.loginForm.valid);
+  }
+
 }

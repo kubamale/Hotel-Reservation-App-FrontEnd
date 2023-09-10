@@ -28,10 +28,20 @@
     font-size: 20px;
     color: gray;
 }
-.user-input-wrp .inputText:focus{
+
+.user-input-wrp .inputText:focus {
 	border-color: blue;
 	border-width: medium medium 2px;
 }
+
+.inputText:invalid{
+    border-color: red !important;
+    color: red;
+}
+
+
+
+
 .user-input-wrp .floating-label {
 	position: absolute;
 	pointer-events: none;
@@ -50,7 +60,7 @@
 .login-button{
     width: 400px;
     height: 70px;
-    background-color: rgb(15, 221, 15);
+    background-color: rgb(166, 15, 221);
     font-size: 50px;
     text-align: center;
     color: white;
