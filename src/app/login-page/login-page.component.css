@@ -1,0 +1,60 @@
+.main-container{
+    width:fit-content;
+    margin: auto;
+    padding: 35px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    margin-top: 70px;
+}
+
+.data{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.user-input-wrp {
+	position: relative;
+	width: 400px;
+    height: 50px;
+    margin-bottom: 30px;
+}
+.user-input-wrp .inputText{
+	width: 100%;
+	outline: none;
+	border:none;
+	border-bottom: 1px solid #777;
+ 	box-shadow: none !important;
+    font-size: 20px;
+    color: gray;
+}
+.user-input-wrp .inputText:focus{
+	border-color: blue;
+	border-width: medium medium 2px;
+}
+.user-input-wrp .floating-label {
+	position: absolute;
+	pointer-events: none;
+	top: 18px;
+	left: 10px;
+	transition: 0.2s ease all;
+}
+.user-input-wrp input:focus ~ .floating-label,
+.user-input-wrp input:not(:focus):valid ~ .floating-label{
+	top: 0px;
+	left: 10px;
+	font-size: 13px;
+	opacity: 1;
+}
+
+.login-button{
+    width: 400px;
+    height: 70px;
+    background-color: rgb(15, 221, 15);
+    font-size: 50px;
+    text-align: center;
+    color: white;
+    border: 1px solid gray;
+    margin-top: 20px;
+
+}

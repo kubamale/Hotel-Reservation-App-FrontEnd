@@ -25,7 +25,9 @@ export class NavbarComponent {
     this.router.navigate(['/hotels'], navigationExtras);
   }
 
-  navigateToUserProfile(): void{
-      this.router.navigate(['/profile']);
+  navigateTo(page: string): void{
+      this.router.navigate([page]);
   }
+
+  
 }
