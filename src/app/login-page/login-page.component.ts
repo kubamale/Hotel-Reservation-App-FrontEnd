@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http'; 
 
 @Component({
   selector: 'app-login-page',
@@ -9,17 +10,27 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginPageComponent implements OnInit {
 
   loginForm!: FormGroup;
-  constructor(private formBuilder: FormBuilder){}
+  constructor(private formBuilder: FormBuilder, private http:HttpClient){}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.email, Validators.required]],
+      login: ['', [Validators.email, Validators.required]],
       password: ['', Validators.required]
     });
   }
 
   login(): void {
-    console.log(this.loginForm.valid);
+    
+    const data = {
+      login : this.loginForm.value,
+      password : this.loginForm.value
+    }
+    console.log(data);
+    if (this.loginForm.valid) {
+      console.log(this.loginForm.valid);
+    this.http.post("http://localhost:8080/login", this.loginForm.value).subscribe(data => console.log(data));
+    }
+
   }
 
 }
