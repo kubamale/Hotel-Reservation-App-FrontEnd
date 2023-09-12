@@ -1,1 +1,29 @@
-<p>registration-page works!</p>
+<div class="main-container" >
+    <form [formGroup]="registrationForm" (ngSubmit)="register()">
+        <div class="data">
+            <div class="user-input-wrp">
+                <br/>
+                <input type="text" class="inputText" formControlName="firstName" required/>
+                <span class="floating-label">First Name</span>
+            </div>
+            <div class="user-input-wrp">
+                <br/>
+                <input type="text" class="inputText" formControlName="lastName" required/>
+                <span class="floating-label">Last Name</span>
+              </div>
+            <div class="user-input-wrp">
+                <br/>
+                <input type="email" class="inputText" formControlName="login" required/>
+                <span class="floating-label">Email</span>
+            </div>
+            <div class="user-input-wrp">
+                <br/>
+                <input type="password" class="inputText" formControlName="password" required/>
+                <span class="floating-label">Password</span>
+            </div>
+            
+        </div>
+        <button class="login-button" type="submit" (submit)="register()" [disabled]="!registrationForm.valid">Register</button>
+    </form>
+    
+</div>

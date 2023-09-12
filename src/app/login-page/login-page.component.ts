@@ -20,12 +20,6 @@ export class LoginPageComponent implements OnInit {
   }
 
   login(): void {
-    
-    const data = {
-      login : this.loginForm.value,
-      password : this.loginForm.value
-    }
-    console.log(data);
     if (this.loginForm.valid) {
       console.log(this.loginForm.valid);
     this.http.post("http://localhost:8080/login", this.loginForm.value).subscribe(data => console.log(data));
