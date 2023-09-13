@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AxiosService } from '../axios.service';
 
 @Component({
   selector: 'app-registration-page',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistrationPageComponent {
   registrationForm!: FormGroup;
-  constructor(private formBuilder: FormBuilder, private http:HttpClient){}
+  constructor(private formBuilder: FormBuilder, private http:HttpClient, private axiosService: AxiosService){}
 
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
@@ -24,7 +25,9 @@ export class RegistrationPageComponent {
 
     if (this.registrationForm.valid) {
       console.log(this.registrationForm.valid);
-    this.http.post("http://localhost:8080/register", this.registrationForm.value).subscribe(data => console.log(data));
+      this.axiosService.reqest('POST', '/register', this.registrationForm.value).then(response => {
+        this.axiosService.setAuthToken(response.data.token);
+      });
     }
 
   }

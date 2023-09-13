@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HotelModel } from 'src/shared/hotel';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
+import { AxiosService } from '../axios.service';
 
 @Component({
   selector: 'app-main-tab',
@@ -13,7 +14,7 @@ export class MainTabComponent implements OnInit {
   from: String = '';
   to: String = '';
   
-  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { 
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private axiosService: AxiosService) { 
     this.route.queryParams.subscribe(params => {
         if(params['from']!= null && params['to']!= null){
           this.from = params['from'];
@@ -26,16 +27,18 @@ export class MainTabComponent implements OnInit {
     let querystring : string;
 
     if(this.from && this.to){
-      querystring = `http://localhost:8080/hotels/date?startDate=${this.from}&endDate=${this.to}`;
+      querystring = `/hotels/date?startDate=${this.from}&endDate=${this.to}`;
     }
     else{
-      querystring = `http://localhost:8080/hotels`;
+      querystring = `/hotels`;
     }
 
-    this.http.get(querystring).subscribe(data => {
-      this.hotels = data as HotelModel[];
-      console.log(this.hotels);
-    });
+    // this.http.get(querystring).subscribe(data => {
+    //   this.hotels = data as HotelModel[];
+    //   console.log(this.hotels);
+    // });
+
+    this.axiosService.reqest('GET', querystring, {}).then(data => this.hotels = data.data as HotelModel[]);
   }
 
   
@@ -43,10 +46,7 @@ export class MainTabComponent implements OnInit {
   isHotelSelected: boolean = false;
 
   getAvailableHotels(from: String, to: String) {
-    this.http.get('http://localhost:8080/hotels/date?startDate=' + from + '&endDate=' + to).subscribe(data => {
-      this.hotels = data as HotelModel[];
-      console.log(this.hotels);
-    });
+    this.axiosService.reqest('GET', `/hotels/date?startDate=${from}&endDate=${to}`, {}).then(data => this.hotels = data.data as HotelModel[]);
     console.log(this.hotels);
   }
 
