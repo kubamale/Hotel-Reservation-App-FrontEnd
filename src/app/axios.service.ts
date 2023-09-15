@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
 
 @Injectable({
@@ -6,7 +7,7 @@ import axios from 'axios';
 })
 export class AxiosService {
 
-  constructor() { 
+  constructor(private route: Router) { 
     axios.defaults.baseURL = 'http://localhost:8080';
     axios.defaults.headers.post['Content-Type'] = 'application/json';
   }
@@ -24,7 +25,11 @@ export class AxiosService {
       url: url,
       data: data,
       headers: headers
-    })
+    }).catch((error) =>{
+        if (error.code === 'ERR_BAD_REQUEST'){
+            this.route.navigate(['/login']);
+          }
+    });
   }
 
   getAuhtToken(): string | null{

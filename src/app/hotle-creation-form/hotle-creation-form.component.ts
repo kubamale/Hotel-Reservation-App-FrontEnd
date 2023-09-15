@@ -7,6 +7,10 @@ import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Output, EventEmitter } from '@angular/core';
+import { UserService } from '../user.service';
+import { NavigationExtras, RouteReuseStrategy, Router } from '@angular/router';
+import { AxiosService } from '../axios.service';
+import axios from 'axios';
 
 @Component({
   selector: 'app-hotle-creation-form',
@@ -23,7 +27,7 @@ export class HotleCreationFormComponent implements OnInit {
   hotelForm!: FormGroup;
   announcer = inject(LiveAnnouncer);
 
-  constructor(private formBuilder: FormBuilder,private http: HttpClient, private _snackBar: MatSnackBar) { }
+  constructor(private formBuilder: FormBuilder,private http: HttpClient, private _snackBar: MatSnackBar, private router:Router, private axois: AxiosService) { }
 
   ngOnInit(): void {
     this.hotelForm = this.formBuilder.group({
@@ -48,9 +52,10 @@ export class HotleCreationFormComponent implements OnInit {
       newHotel.picURL = this.picURL;
       newHotel.amenities = this.amenities;
       console.log(newHotel);
-      this.http.post<HotelModel>('http://localhost:8080/hotels', newHotel).subscribe(res =>{
-        const hotel: HotelModel = res;
+      this.axois.reqest('POST', '/hotels', newHotel).then((response) => {
+        
       });
+      this.closeForm();
       this.openSnackBar('Hotel added successfully','CLOSE' );
     }
     else{
@@ -76,6 +81,7 @@ export class HotleCreationFormComponent implements OnInit {
   closeForm(): void {
     console.log('Closing');
     this.newItemEvent.emit();
+    this.hotelForm.reset();
   }
 
   removePic(pic: string): void {

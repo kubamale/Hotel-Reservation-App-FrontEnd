@@ -5,10 +5,10 @@
                 Chillout.com
             </div>
            <div class="buttons">
-                <button class="credentials" (click)="navigateTo('/register')">Register</button>
-                <button class="credentials" (click)="navigateTo('/login')">Login</button>
-                <button class="credentials" (click)="navigateTo('/profile')">Profile</button>
-                <button class="credentials" (click)="logout()">Logout</button>
+                <button *ngIf="!isUserLoggedIn" class="credentials" (click)="navigateTo('/register')">Register</button>
+                <button *ngIf="!isUserLoggedIn" class="credentials" (click)="navigateTo('/login')">Login</button>
+                <button *ngIf="isUserLoggedIn" class="credentials" (click)="navigateTo('/profile')">Profile</button>
+                <button *ngIf="isUserLoggedIn" class="credentials" (click)="logout()">Logout</button>
            </div>
         </div>
         <div class="info">
@@ -23,8 +23,7 @@
                     <input class="details-input" type="text" placeholder="Destination">
                     <input class="details-input" #from type="date" placeholder="Departure Date..." required>
                     <input class="details-input" #to type="date" placeholder="Arrival Date..." required>
-                    <button class="details-input"  (click)="submit(from.value, to.value)">Search</button>
-                
+                    <button class="details-input"  (click)="submit(from.value, to.value)">Search</button>    
             </div>
            
             

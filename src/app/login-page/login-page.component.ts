@@ -2,6 +2,8 @@ import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http'; 
 import { AxiosService } from '../axios.service';
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -11,7 +13,7 @@ import { AxiosService } from '../axios.service';
 export class LoginPageComponent implements OnInit {
 
   loginForm!: FormGroup;
-  constructor(private formBuilder: FormBuilder, private http:HttpClient, private axiosService: AxiosService){}
+  constructor(private formBuilder: FormBuilder, private http:HttpClient, private axiosService: AxiosService,  private userService: UserService, private router: Router){}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -26,6 +28,8 @@ export class LoginPageComponent implements OnInit {
       this.axiosService.reqest('POST', '/login', this.loginForm.value)
       .then(response => {
         this.axiosService.setAuthToken(response.data.token);
+        this.userService.userLoggedIn();
+        this.router.navigate(['/']);
       });
     }
 
