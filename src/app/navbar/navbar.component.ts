@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { countries } from 'src/shared/country-data-store';
-import { Countries } from 'src/shared/country.model';
 import { AxiosService } from '../axios.service';
 import { UserService } from '../user.service';
 
@@ -22,7 +21,7 @@ export class NavbarComponent implements OnInit{
     if (window.localStorage.getItem('auth_token') !== null) {
       this.isUserLoggedIn = true;
     }
-   this.userService.userLoggedInEmmiter().subscribe(data => this.isUserLoggedIn = data);
+   this.userService.userLoggedInEmmiter().subscribe(data => {this.isUserLoggedIn = data != null; console.log(data as number);});
   }
   public cont: any = countries;
   submit(from: String, to: String) {
@@ -43,6 +42,7 @@ export class NavbarComponent implements OnInit{
   logout(): void{
     this.axiosService.reqest('GET', '/logout', {}).then(response => console.log(response));
     window.localStorage.removeItem('auth_token');
+    window.localStorage.removeItem('user');
     this.isUserLoggedIn = false;
   }
 

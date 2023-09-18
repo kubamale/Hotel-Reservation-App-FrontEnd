@@ -8,5 +8,6 @@
     position: absolute; 
     top: 30%;
     margin: 30px;
+    z-index: 1001;
 }
   

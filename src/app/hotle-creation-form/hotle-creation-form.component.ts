@@ -1,4 +1,4 @@
-import { Component, OnInit , inject} from '@angular/core';
+import { Component, OnInit , inject, Input} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { HotelModel } from 'src/shared/hotel';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -46,9 +46,9 @@ export class HotleCreationFormComponent implements OnInit {
   hotel!: HotelModel ;
 
   submit(): void {
-    console.log('Submit');
     if (this.hotelForm.valid) {
       const newHotel: HotelModel = this.hotelForm.value;
+      newHotel.userId = Number(window.localStorage.getItem('user'));
       newHotel.picURL = this.picURL;
       newHotel.amenities = this.amenities;
       console.log(newHotel);

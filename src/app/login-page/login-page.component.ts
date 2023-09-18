@@ -24,12 +24,12 @@ export class LoginPageComponent implements OnInit {
 
   login(): void {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.valid);
       this.axiosService.reqest('POST', '/login', this.loginForm.value)
       .then(response => {
         this.axiosService.setAuthToken(response.data.token);
-        this.userService.userLoggedIn();
+        this.userService.userLoggedIn(response.data.id);
         this.router.navigate(['/']);
+        window.localStorage.setItem('user', JSON.stringify(response.data.id));
       });
     }
 

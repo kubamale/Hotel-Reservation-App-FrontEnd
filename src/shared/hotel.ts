@@ -11,4 +11,5 @@ export interface HotelModel{
     description:string;
     picURL:string[];
     amenities:string[];
+    userId: number;
 }
