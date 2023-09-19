@@ -32,13 +32,7 @@ export class MainTabComponent implements OnInit {
     else{
       querystring = `/hotels`;
     }
-
-    // this.http.get(querystring).subscribe(data => {
-    //   this.hotels = data as HotelModel[];
-    //   console.log(this.hotels);
-    // });
-
-    this.axiosService.reqest('GET', querystring, {}).then(data => this.hotels = data.data as HotelModel[]);
+    this.axiosService.reqest('GET', querystring, {}).then(data => this.hotels = data.data as HotelModel[]).catch(err => {});
   }
 
   

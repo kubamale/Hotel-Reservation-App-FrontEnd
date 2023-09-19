@@ -26,7 +26,7 @@ export class AxiosService {
       data: data,
       headers: headers
     }).catch((error) =>{
-        if (error.code === 'ERR_BAD_REQUEST'){
+        if (error.response['status'] == 401){
             this.route.navigate(['/login']);
           }
     });

@@ -3,6 +3,6 @@
 <div [hidden]="!isVisible">
     <div  class="form-container" >
     
-        <app-hotle-creation-form class="form" (newItemEvent)="closeForm()"></app-hotle-creation-form>
+        <app-hotle-creation-form class="form" (newItemEvent)="closeForm()"  (showHotelEvent) = "showHotel($event)" ></app-hotle-creation-form>
     </div>
 </div >

@@ -7,10 +7,8 @@ import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Output, EventEmitter } from '@angular/core';
-import { UserService } from '../user.service';
-import { NavigationExtras, RouteReuseStrategy, Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { AxiosService } from '../axios.service';
-import axios from 'axios';
 
 @Component({
   selector: 'app-hotle-creation-form',
@@ -18,7 +16,7 @@ import axios from 'axios';
   styleUrls: ['./hotle-creation-form.component.css'],
 })
 export class HotleCreationFormComponent implements OnInit {
-
+  @Output() showHotelEvent = new EventEmitter<number>();
   @Output() newItemEvent = new EventEmitter();
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
@@ -51,9 +49,9 @@ export class HotleCreationFormComponent implements OnInit {
       newHotel.userId = Number(window.localStorage.getItem('user'));
       newHotel.picURL = this.picURL;
       newHotel.amenities = this.amenities;
-      console.log(newHotel);
       this.axois.reqest('POST', '/hotels', newHotel).then((response) => {
-        
+        const hotelId = Number(response.data.Id);
+        this.showHotelEvent.emit(hotelId);
       });
       this.closeForm();
       this.openSnackBar('Hotel added successfully','CLOSE' );
@@ -79,7 +77,6 @@ export class HotleCreationFormComponent implements OnInit {
     event.chipInput!.clear();
   }
   closeForm(): void {
-    console.log('Closing');
     this.newItemEvent.emit();
     this.hotelForm.reset();
   }

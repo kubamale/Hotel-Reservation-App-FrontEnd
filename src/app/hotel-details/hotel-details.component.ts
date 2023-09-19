@@ -14,10 +14,16 @@ export class HotelDetailsComponent implements OnInit {
   id!: number;
   constructor(private route: ActivatedRoute, private http: HttpClient, private axiosService: AxiosService) {
     this.route.queryParams.subscribe(params => {
-        this.id = params['id'];
+        this.id = params['id'] as number;
+        console.log(params['id'] as string);
     });
   }
+
+
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.id = params['id'];
+  });
     this.axiosService.reqest('GET', `/hotels/details?id=${this.id}`, {}).then(response => this.hotel = response.data as HotelModel);
   }
 }

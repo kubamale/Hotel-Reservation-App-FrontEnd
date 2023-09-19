@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserService } from '../user.service';
 import { AxiosService } from '../axios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,12 +9,13 @@ import { AxiosService } from '../axios.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit{
+
   isVisible = false;
   userId !: number;
-  constructor(private userService: UserService, private axios: AxiosService){}
+  constructor(private userService: UserService, private axios: AxiosService, private router: Router){}
 
   ngOnInit(): void {
-    this.userService.userLoggedInEmmiter().subscribe(data => {this.userId = data as number; console.log(data as number);});
+    this.userService.userLoggedInEmmiter().subscribe(data => {this.userId = data as number;});
   }
 
 
@@ -24,5 +26,10 @@ export class UserProfileComponent implements OnInit{
 
   closeForm(): void {
     this.isVisible = false;
+  }
+
+  showHotel(id: number): void {
+
+    this.router.navigate(['/hotel-details'], {queryParams: {id: id}});
   }
 }
