@@ -1,8 +1,15 @@
-<button (click)="toggleVisibility()">Add Hotel</button>
 
 <div [hidden]="!isVisible">
     <div  class="form-container" >
-    
         <app-hotle-creation-form class="form" (newItemEvent)="closeForm()"  (showHotelEvent) = "showHotel($event)" ></app-hotle-creation-form>
     </div>
 </div >
+<div class="main-holder">
+    <div class="hotels-tabs">
+        <button  *ngFor="let hotel of usersHotels; let i = index" class="hotel" (click)="performAction(hotel)">
+            <img [src]="hotel.picURL[0]" class="hotel-pic">
+            <h3>{{hotel.name}}</h3>
+        </button>
+    </div>
+    
+</div>

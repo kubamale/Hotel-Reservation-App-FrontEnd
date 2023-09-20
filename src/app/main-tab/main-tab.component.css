@@ -27,4 +27,5 @@
 
 .hotel-button:hover{
     cursor: pointer;
+    box-shadow: 3px 3px 5px 4px rgba(133, 30, 177, 0.571);
 }
