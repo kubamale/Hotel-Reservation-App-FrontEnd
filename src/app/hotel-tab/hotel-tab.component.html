@@ -3,14 +3,15 @@
     <img class="picture" [src]="hotel.picURL.at(0)" alt="zdjęcie" width="100px" height="80px">
     <div class="info">
         <!-- Druga połowa amenities -->
-        <p class="info-text" *ngFor="let amenite of hotel.amenities.slice(hotel.amenities.length / 2)">
-          {{ amenite }}</p>
+        <!-- <p class="info-text" *ngFor="let amenite of hotel.amenities.slice(hotel.amenities.length / 2)">
+          {{ amenite.name }}</p> -->
+          
+        <app-amenitie *ngFor="let amenite of hotel.amenities.slice(hotel.amenities.length / 2)" [amenitie]="amenite"></app-amenitie>  
       </div>
       <div class="vertical-line"></div> 
     <div class="info">
         <!-- Pierwsza połowa amenities -->
-        <p class="info-text" *ngFor="let amenite of hotel.amenities.slice(0, hotel.amenities.length / 2)">
-          {{ amenite }}</p>
+        <app-amenitie *ngFor="let amenite of hotel.amenities.slice(0, hotel.amenities.length / 2)" [amenitie]="amenite"></app-amenitie>
       </div>
       
 </div>

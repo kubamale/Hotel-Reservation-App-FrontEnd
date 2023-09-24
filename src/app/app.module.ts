@@ -24,6 +24,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { AmenitieComponent } from './amenitie/amenitie.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { RegistrationPageComponent } from './registration-page/registration-page
     HotleCreationFormComponent,
     UserProfileComponent,
     LoginPageComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    AmenitieComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import { RegistrationPageComponent } from './registration-page/registration-page
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule
 
 
   ],

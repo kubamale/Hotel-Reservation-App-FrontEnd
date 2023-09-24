@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AxiosService } from '../axios.service';
@@ -12,7 +11,7 @@ import { UserService } from '../user.service';
 })
 export class RegistrationPageComponent {
   registrationForm!: FormGroup;
-  constructor(private formBuilder: FormBuilder, private http:HttpClient, private axiosService: AxiosService, private router: Router, private userService: UserService){}
+  constructor(private formBuilder: FormBuilder, private axiosService: AxiosService, private router: Router, private userService: UserService){}
 
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({

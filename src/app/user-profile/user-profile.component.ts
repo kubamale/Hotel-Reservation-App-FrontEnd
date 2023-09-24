@@ -21,7 +21,7 @@ export class UserProfileComponent implements OnInit{
     description: '',
     name: 'New Hotel',
     picURL : ['assets/icons/plus-icon.png'],
-    amenities: [''],
+    amenities: [],
     city: '',
     postalCode: '',
     street: '',

@@ -60,25 +60,11 @@
     </mat-form-field>
     <mat-form-field class="additional-info">
         <mat-label>Amenities</mat-label>
-        <mat-chip-grid #chipGrid aria-label="Enter amenities">
-            <mat-chip-row *ngFor="let amenitie of amenities"
-                        (removed)="remove(amenitie)"
-                        [editable]="true"
-                        (edited)="edit(amenitie, $event)"
-                        [aria-description]="'press enter to edit ' + amenitie">
-                        {{amenitie}}
-                <button matChipRemove [attr.aria-label]="'remove ' + amenitie">
-                    <mat-icon>cancel</mat-icon>
-                </button>
-            </mat-chip-row>
-            <input placeholder="New amenitie.."
-                [matChipInputFor]="chipGrid"
-                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                [matChipInputAddOnBlur]="addOnBlur"
-                (matChipInputTokenEnd)="add($event)"/>
-        </mat-chip-grid>
-    
-    </mat-form-field>
+        <mat-select formControlName="amenities" multiple>
+          <mat-option z-index="1000" *ngFor="let amenitie of amenities" [value]="amenitie">{{amenitie.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
     <button class="add-hotel-button" type="submit" >Create Hotel</button>
   </form>
 

@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Output, EventEmitter } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AxiosService } from '../axios.service';
+import { AmenitiesModel } from 'src/shared/amenities';
 
 @Component({
   selector: 'app-hotle-creation-form',
@@ -20,14 +21,16 @@ export class HotleCreationFormComponent implements OnInit {
   @Output() newItemEvent = new EventEmitter();
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  amenities: string[] = [];
   picURL: string[] = [];
   hotelForm!: FormGroup;
   announcer = inject(LiveAnnouncer);
+  amenities: AmenitiesModel[] = [];
 
   constructor(private formBuilder: FormBuilder,private http: HttpClient, private _snackBar: MatSnackBar, private router:Router, private axois: AxiosService) { }
 
   ngOnInit(): void {
+    this.axois.reqest('GET', '/hotels/amenities', {}).then(response => {this.amenities = response.data as AmenitiesModel[]});
+
     this.hotelForm = this.formBuilder.group({
       country: ['', Validators.required],
       city: ['', Validators.required],
@@ -37,24 +40,27 @@ export class HotleCreationFormComponent implements OnInit {
       phoneNumber: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       name: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.required],
+      amenities: ['']
     });
   }
 
   hotel!: HotelModel ;
 
   submit(): void {
+    console.log(this.hotelForm.value);
     if (this.hotelForm.valid) {
       const newHotel: HotelModel = this.hotelForm.value;
       newHotel.userId = Number(window.localStorage.getItem('user'));
       newHotel.picURL = this.picURL;
-      newHotel.amenities = this.amenities;
+      //newHotel.amenities = this.amenities;
       this.axois.reqest('POST', '/hotels', newHotel).then((response) => {
         const hotelId = Number(response.data.Id);
         this.showHotelEvent.emit(hotelId);
+        this.closeForm();
+        this.openSnackBar('Hotel added successfully','CLOSE' );
       });
-      this.closeForm();
-      this.openSnackBar('Hotel added successfully','CLOSE' );
+      
     }
     else{
       console.log('error');
@@ -104,44 +110,6 @@ export class HotleCreationFormComponent implements OnInit {
     const index = this.picURL.indexOf(pic);
     if (index >= 0) {
       this.picURL[index] = value;
-    }
-  }
-
-  add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
-
-    // Add our fruit
-    if (value) {
-      this.amenities.push(value);
-    }
-
-    // Clear the input value
-    event.chipInput!.clear();
-  }
-
-  remove(amenitie: string): void {
-    const index = this.amenities.indexOf(amenitie);
-
-    if (index >= 0) {
-      this.amenities.splice(index, 1);
-
-      this.announcer.announce(`Removed ${amenitie}`);
-    }
-  }
-
-  edit(amenitie: string, event: MatChipEditedEvent) {
-    const value = event.value.trim();
-
-    // Remove fruit if it no longer has a name
-    if (!value) {
-      this.remove(amenitie);
-      return;
-    }
-
-    // Edit existing fruit
-    const index = this.amenities.indexOf(amenitie);
-    if (index >= 0) {
-      this.amenities[index] = value;
     }
   }
 }

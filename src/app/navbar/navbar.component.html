@@ -16,10 +16,6 @@
                     Where do You want to go...
             </div>
             <div class="details">
-                    <label>Country...</label>
-                    <select name="Country" class="details-input">
-                        <option  *ngFor="let con of cont" value="con.name">{{con.name}}</option>
-                    </select>
                     <input class="details-input" type="text" placeholder="Destination">
                     <input class="details-input" #from type="date" placeholder="Departure Date..." required>
                     <input class="details-input" #to type="date" placeholder="Arrival Date..." required>

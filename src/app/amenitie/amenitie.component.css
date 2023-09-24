@@ -1,0 +1,16 @@
+.main-holder{
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+}
+
+.picture{
+    height: 20px;
+    margin-left: 1px;
+    padding: 3px;
+}
+
+.name{
+    text-align: left;
+    padding: 3px;
+    
+}

@@ -1,3 +1,5 @@
+import { AmenitiesModel } from "./amenities";
+
 export interface HotelModel{
     id: number;
     country:string;
@@ -10,6 +12,6 @@ export interface HotelModel{
     name:string;
     description:string;
     picURL:string[];
-    amenities:string[];
+    amenities:AmenitiesModel[];
     userId: number;
 }
