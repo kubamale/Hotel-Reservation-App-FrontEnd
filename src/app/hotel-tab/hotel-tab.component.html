@@ -1,17 +1,41 @@
 <div class="main-container" >
     
     <img class="picture" [src]="hotel.picURL.at(0)" alt="zdjęcie" width="100px" height="80px">
-    <div class="info">
-        <!-- Druga połowa amenities -->
-        <!-- <p class="info-text" *ngFor="let amenite of hotel.amenities.slice(hotel.amenities.length / 2)">
-          {{ amenite.name }}</p> -->
-          
+    <div class="vertical-line"></div> 
+    <div>
+      <h3><b>{{hotel.name}}</b></h3>
+      <div class="data-box">
+          <div >
+              <img class="icon" src="/assets/icons/home.png" alt="">
+          </div>
+          <div class="data">
+            <p class="data">{{hotel.city}}, {{hotel.street}} {{hotel.streetNumber}}</p>
+          </div>
+      </div>
+      <div class="data-box">
+        <div >
+            <img class="icon" src="/assets/icons/email.png" alt="">
+        </div>
+        <div class="data">
+          <p class="data">{{hotel.email}}</p>
+        </div>
+      </div>
+      <div class="data-box">
+        <div >
+            <img class="icon" src="/assets/icons/phone.png" alt="">
+        </div>
+        <div class="data">
+          <p class="data">{{hotel.phoneNumber}}</p>
+        </div>
+      </div>
+  </div>
+    <div class="vertical-line"></div> 
+    <div>
         <app-amenitie *ngFor="let amenite of hotel.amenities.slice(hotel.amenities.length / 2)" [amenitie]="amenite"></app-amenitie>  
-      </div>
+    </div>
       <div class="vertical-line"></div> 
-    <div class="info">
-        <!-- Pierwsza połowa amenities -->
+    <div>
         <app-amenitie *ngFor="let amenite of hotel.amenities.slice(0, hotel.amenities.length / 2)" [amenitie]="amenite"></app-amenitie>
-      </div>
+    </div>
       
 </div>
