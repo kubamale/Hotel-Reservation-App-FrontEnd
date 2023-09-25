@@ -28,7 +28,8 @@ export class UserProfileComponent implements OnInit{
     streetNumber: '',
     email: '',
     phoneNumber: '',
-    userId: 0
+    userId: 0,
+    ratings:[]
   }
 
   constructor( private axios: AxiosService, private router: Router){}

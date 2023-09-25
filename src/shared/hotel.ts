@@ -1,4 +1,5 @@
 import { AmenitiesModel } from "./amenities";
+import { RatingsModel } from "./ratings";
 
 export interface HotelModel{
     id: number;
@@ -14,4 +15,5 @@ export interface HotelModel{
     picURL:string[];
     amenities:AmenitiesModel[];
     userId: number;
+    ratings: RatingsModel[];
 }
