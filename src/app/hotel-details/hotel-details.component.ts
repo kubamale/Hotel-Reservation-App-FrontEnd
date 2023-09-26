@@ -16,6 +16,8 @@ export class HotelDetailsComponent implements OnInit {
   id!: number;
   isRating:boolean = false;
   ratingForm!: FormGroup;
+  stars: number[] = [1,2,3,4,5];
+  selectedStars: number = 1;
   constructor(private route: ActivatedRoute, private http: HttpClient, private axiosService: AxiosService, private formbuilder: FormBuilder) {
     this.route.queryParams.subscribe(params => {
         this.id = params['id'] as number;
@@ -28,10 +30,10 @@ export class HotelDetailsComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
   });
-    this.axiosService.reqest('GET', `/hotels/details?id=${this.id}`, {}).then(response => this.hotel = response.data as HotelModel);
+    this.axiosService.reqest('GET', `/hotels/details?id=${this.id}`, {}).then(response => {this.hotel = response.data as HotelModel; });
+
 
     this.ratingForm = this.formbuilder.group({
-      rating: ['', Validators.required],
       opinion: ['', Validators.required]
     });
   }
@@ -41,16 +43,25 @@ export class HotelDetailsComponent implements OnInit {
   }
 
   addOpinion(){
-
-    const ratingsDTO: RatingsModel = {
-        rating: Number(this.ratingForm.controls['rating'].value),
-        opinion: String(this.ratingForm.controls['opinion'].value),
-        date: new Date(),
-        hotelId: this.id,
-        userId: Number(window.localStorage.getItem('user'))
+    if (this.ratingForm.valid && this.selectedStars > 0 && this.selectedStars <= 5){
+      this.isRating = false;
+      const ratingsDTO: RatingsModel = {
+          rating: this.selectedStars,
+          opinion: String(this.ratingForm.controls['opinion'].value),
+          date: new Date(),
+          hotelId: this.id,
+          userId: Number(window.localStorage.getItem('user'))
+      }
+      this.axiosService.reqest('PUT', '/hotels/ratings', ratingsDTO).then(response => {
+        let temp: RatingsModel[] = this.hotel.ratings;
+        temp.push(response.data as RatingsModel);
+        this.hotel.ratings = temp as RatingsModel[];
+      });
     }
+   
+  }
 
-    console.log(window.localStorage.getItem('user') as string);
-    this.axiosService.reqest('PUT', '/hotels/ratings', ratingsDTO).then(response => this.hotel.ratings.push(response as RatingsModel));
+  over(index: number){
+    this.selectedStars= index +1;
   }
 }

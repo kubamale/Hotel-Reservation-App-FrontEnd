@@ -1,42 +1,53 @@
-<div  *ngIf="hotel">
+<div class="holder"  *ngIf="hotel">
     <div class="main-holder">
         <div class="sidebar">
             <div class="search-bar"></div>
             <div class="map"></div>
-    </div>
+        </div>
 
-    <div class="details-holder">
-        <div class="data-holder">
-            <app-image-slider [hotel]="hotel"></app-image-slider>
-            <div class="amenities-holder">
-                <div class="amenities" *ngFor="let amenitie of hotel.amenities">
-                    {{amenitie.name}}</div>
+        <div class="details-holder">
+            <div class="data-holder">
+                <app-image-slider [hotel]="hotel"></app-image-slider>
+                <div class="amenities-holder">
+                    <div class="amenities" *ngFor="let amenitie of hotel.amenities">
+                        {{amenitie.name}}</div>
+                </div>
+                <div class="description">
+                    <p>{{hotel.description}}</p>
+                </div>
             </div>
-            <div class="description">
-                <p>{{hotel.description}}</p>
+            <div class="data-holder">
+                <div class="opinion-holder">
+                    <button *ngIf="!isRating" (click)="toggleFormVisiblity()">Rate this hotel</button>
+                    <div *ngIf="isRating" class="rating-form">
+                        <div class="form-body">
+                            <div class="rate-stars">
+                                <div  *ngFor="let star of stars; let i = index" (mouseover)="over(i)">
+                                    <img class="star" *ngIf="i < selectedStars"  src="assets/icons/1-full-star.png" alt="">
+                                    <img class="star" *ngIf="i >= selectedStars" src="assets/icons/1-empty-star.png" alt="">
+                                </div>
+                            </div>
+                            <form [formGroup]="ratingForm" (ngSubmit)="addOpinion()">
+                            <textarea class="opinion-text" formControlName="opinion" required="true" placeholder="Tell us aout your expirience..."></textarea><br/>
+                            <div class="buttons">
+                                <button class="add-opinion-button" type="submit">cancel</button>
+                                <button class="add-opinion-button" type="submit">post</button>
+                            </div>   
+                            </form>
+                        </div>
+                        
+                    </div>
+                    <div class="opinin" *ngFor="let rating of hotel.ratings">
+                        <app-opinion [opinion]="rating"></app-opinion>
+                    </div>
+                </div>
             </div>
+            
         </div>
-        <div class="data-holder">
-        </div>
-        
-    </div>
 
     </div>
     
-    <div class="opinion-holder">
-        <button *ngIf="!isRating" (click)="toggleFormVisiblity()">Rate this hotel</button>
-        <div *ngIf="isRating" class="rating-form">
-            <form [formGroup]="ratingForm" (ngSubmit)="addOpinion()">
-            <input formControlName="rating" type="number">
-            <input formControlName="opinion" type="text">
-            <button type="submit">post</button>
-            </form>
-        </div>
-        <div class="opinin" *ngFor="let rating of hotel.ratings">
-            {{rating.rating}}
-            {{rating.opinion}}
-        </div>
-    </div>
+    
 </div>
 
 

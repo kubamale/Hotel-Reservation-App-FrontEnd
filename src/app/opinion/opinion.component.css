@@ -1,0 +1,32 @@
+.stars{
+    height: 20px;
+}
+
+.stars:hover{
+    cursor: pointer;
+}
+
+.opinion{
+    border: 1px solid rgb(59, 110, 250);
+    margin: 4px;
+    border-radius: 3px;
+    background-color: rgba(236, 179, 249, 0.2);
+    padding: 6px;
+}
+
+.data{
+    margin: 6px;
+}
+
+.opinion-text{
+    background-color:rgb(255, 255, 255);
+    padding: 6px;
+    border: 1px solid rgb(59, 110, 250);
+    border-radius: 4px;
+    margin: 6px;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+}

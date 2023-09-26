@@ -1,0 +1,12 @@
+<div class="opinion" *ngIf="opinion != undefined">
+    <div class="data">
+        <div class="header">
+            {{opinion.userName}} ({{year}}) <img class="stars" [src]="path" alt="" (click)="test()">
+        </div>
+        
+        <div class="opinion-text">
+            {{opinion.opinion}}
+        </div>
+    </div>
+    
+</div>

@@ -26,6 +26,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { AmenitieComponent } from './amenitie/amenitie.component';
 import {MatSelectModule} from '@angular/material/select';
+import { OpinionComponent } from './opinion/opinion.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {MatSelectModule} from '@angular/material/select';
     UserProfileComponent,
     LoginPageComponent,
     RegistrationPageComponent,
-    AmenitieComponent
+    AmenitieComponent,
+    OpinionComponent
   ],
   imports: [
     BrowserModule,
