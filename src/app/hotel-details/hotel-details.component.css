@@ -24,7 +24,6 @@
 
 .details-holder{
     width: 80%;
-    border: 1px solid black;
 }
 
 .pictures{
@@ -42,8 +41,8 @@
     margin: 3px;
 }
 
-.opinion{
-    background-color: aliceblue !important;
+.star:hover{
+    cursor: pointer;
 }
 
 .opinion-holder{
@@ -63,8 +62,9 @@
     padding: 10px;
     width: 90%;
     margin: auto;
-    border: 1px solid blueviolet;
-   
+    border: 1px solid rgb(59, 110, 250);
+    border-radius: 4px;
+    background-color: rgba(179, 208, 249, 0.68);
 }
 
 .rate-stars{

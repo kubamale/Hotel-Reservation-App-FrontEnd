@@ -18,6 +18,7 @@ export class HotelDetailsComponent implements OnInit {
   ratingForm!: FormGroup;
   stars: number[] = [1,2,3,4,5];
   selectedStars: number = 1;
+  temporaryStar: number = 1;
   constructor(private route: ActivatedRoute, private http: HttpClient, private axiosService: AxiosService, private formbuilder: FormBuilder) {
     this.route.queryParams.subscribe(params => {
         this.id = params['id'] as number;
@@ -61,7 +62,22 @@ export class HotelDetailsComponent implements OnInit {
    
   }
 
+  cancel(){
+    this.isRating = false;
+  }
   over(index: number){
+    if (this.temporaryStar == this.selectedStars){
+      this.temporaryStar = this.selectedStars;
+    }
     this.selectedStars= index +1;
+  }
+
+  leave(){
+    this.selectedStars = this.temporaryStar;
+  }
+
+  setStars(index: number){
+      this.selectedStars = index + 1;
+      this.temporaryStar = index + 1;
   }
 }

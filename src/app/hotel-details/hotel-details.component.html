@@ -22,7 +22,7 @@
                     <div *ngIf="isRating" class="rating-form">
                         <div class="form-body">
                             <div class="rate-stars">
-                                <div  *ngFor="let star of stars; let i = index" (mouseover)="over(i)">
+                                <div  *ngFor="let star of stars; let i = index" (mouseover)="over(i)" (mouseleave)="leave()" (click)="setStars(i)">
                                     <img class="star" *ngIf="i < selectedStars"  src="assets/icons/1-full-star.png" alt="">
                                     <img class="star" *ngIf="i >= selectedStars" src="assets/icons/1-empty-star.png" alt="">
                                 </div>
@@ -30,7 +30,7 @@
                             <form [formGroup]="ratingForm" (ngSubmit)="addOpinion()">
                             <textarea class="opinion-text" formControlName="opinion" required="true" placeholder="Tell us aout your expirience..."></textarea><br/>
                             <div class="buttons">
-                                <button class="add-opinion-button" type="submit">cancel</button>
+                                <button class="add-opinion-button" (click)="cancel()">cancel</button>
                                 <button class="add-opinion-button" type="submit">post</button>
                             </div>   
                             </form>
