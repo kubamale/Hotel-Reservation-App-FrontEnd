@@ -16,6 +16,7 @@ export class HotelDetailsComponent implements OnInit {
   id!: number;
   isRating:boolean = false;
   ratingForm!: FormGroup;
+  rating: string = '';
   stars: number[] = [1,2,3,4,5];
   selectedStars: number = 1;
   temporaryStar: number = 1;
@@ -31,12 +32,16 @@ export class HotelDetailsComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
   });
-    this.axiosService.reqest('GET', `/hotels/details?id=${this.id}`, {}).then(response => {this.hotel = response.data as HotelModel; });
+    this.axiosService.reqest('GET', `/hotels/details?id=${this.id}`, {}).then(response => {
+      this.hotel = response.data as HotelModel; 
+      this.rating = this.calculateRatings((response.data as HotelModel).ratings);
+    });
 
 
     this.ratingForm = this.formbuilder.group({
       opinion: ['', Validators.required]
     });
+
   }
 
   toggleFormVisiblity(){
@@ -57,6 +62,7 @@ export class HotelDetailsComponent implements OnInit {
         let temp: RatingsModel[] = this.hotel.ratings;
         temp.push(response.data as RatingsModel);
         this.hotel.ratings = temp as RatingsModel[];
+        this.rating = this.calculateRatings(temp);
       });
     }
    
@@ -79,5 +85,14 @@ export class HotelDetailsComponent implements OnInit {
   setStars(index: number){
       this.selectedStars = index + 1;
       this.temporaryStar = index + 1;
+  }
+
+  calculateRatings(ratings: RatingsModel[]): string {
+    let result: number = 0;
+    for (let rating of ratings){
+      result += rating.rating;
+    }
+
+    return (result/ratings.length).toFixed(2);
   }
 }

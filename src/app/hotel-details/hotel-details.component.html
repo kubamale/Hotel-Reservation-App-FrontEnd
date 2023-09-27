@@ -18,21 +18,28 @@
             </div>
             <div class="data-holder">
                 <div class="opinion-holder">
-                    <button *ngIf="!isRating" (click)="toggleFormVisiblity()">Rate this hotel</button>
+                    <div class="opinion-top">
+                        <h1>Reviews({{rating}})</h1>
+                        <button *ngIf="!isRating" (click)="toggleFormVisiblity()">Rate this hotel</button>
+                    </div>
+                    
                     <div *ngIf="isRating" class="rating-form">
                         <div class="form-body">
-                            <div class="rate-stars">
-                                <div  *ngFor="let star of stars; let i = index" (mouseover)="over(i)" (mouseleave)="leave()" (click)="setStars(i)">
-                                    <img class="star" *ngIf="i < selectedStars"  src="assets/icons/1-full-star.png" alt="">
-                                    <img class="star" *ngIf="i >= selectedStars" src="assets/icons/1-empty-star.png" alt="">
-                                </div>
-                            </div>
+                            
                             <form [formGroup]="ratingForm" (ngSubmit)="addOpinion()">
-                            <textarea class="opinion-text" formControlName="opinion" required="true" placeholder="Tell us aout your expirience..."></textarea><br/>
-                            <div class="buttons">
-                                <button class="add-opinion-button" (click)="cancel()">cancel</button>
-                                <button class="add-opinion-button" type="submit">post</button>
-                            </div>   
+                                    <div class="rate-stars">
+                                        <div  *ngFor="let star of stars; let i = index" (mouseover)="over(i)" (mouseleave)="leave()" (click)="setStars(i)">
+                                            <img class="star" *ngIf="i < selectedStars"  src="assets/icons/1-full-star.png" alt="">
+                                            <img class="star" *ngIf="i >= selectedStars" src="assets/icons/1-empty-star.png" alt="">
+                                        </div>
+                                    </div>
+                                    <textarea  formControlName="opinion" required="true" placeholder="Tell us aout your expirience..."></textarea>
+                                    <div class="buttons">
+                                        <button class="cancel-button" (click)="cancel()">Cancel</button>
+                                        <button class="post-button" type="submit">Post</button>
+                                    </div>  
+                                
+                             
                             </form>
                         </div>
                         
