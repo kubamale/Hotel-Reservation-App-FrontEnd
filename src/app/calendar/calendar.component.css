@@ -1,0 +1,40 @@
+table{
+    width: 100%;
+    background-color: gray;
+}
+
+
+th, td{
+    border: 1px solid black;
+    margin: 0;
+    text-align: center;
+    padding: 0;
+}
+
+.data{
+    background-color: red;
+}
+
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    background-color: rgb(208, 42, 226);
+    padding: 8px;
+}
+
+a{
+    font-size: 30px;
+    margin: 10px;
+}
+
+a:hover{
+    cursor: pointer;
+    
+}
+
+.month{
+    font-size: 30px;
+    font: bold;
+}

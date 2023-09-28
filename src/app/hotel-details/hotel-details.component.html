@@ -19,7 +19,10 @@
             <div class="data-holder">
                 <div class="opinion-holder">
                     <div class="opinion-top">
-                        <h1>Reviews({{rating}})</h1>
+                        <div class="reviewes-header">
+                            <h1>Reviews</h1><h1 *ngIf="rating !== ''">({{rating}})</h1>
+                        </div>
+                        
                         <button *ngIf="!isRating" (click)="toggleFormVisiblity()">Rate this hotel</button>
                     </div>
                     

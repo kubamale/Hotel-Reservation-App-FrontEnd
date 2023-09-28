@@ -33,8 +33,10 @@ export class HotelDetailsComponent implements OnInit {
       this.id = params['id'];
   });
     this.axiosService.reqest('GET', `/hotels/details?id=${this.id}`, {}).then(response => {
-      this.hotel = response.data as HotelModel; 
-      this.rating = this.calculateRatings((response.data as HotelModel).ratings);
+      this.hotel = response.data as HotelModel;
+      if((response.data as HotelModel).ratings.length > 0) {
+          this.rating = this.calculateRatings((response.data as HotelModel).ratings);
+      }
     });
 
 
@@ -61,7 +63,7 @@ export class HotelDetailsComponent implements OnInit {
       this.axiosService.reqest('PUT', '/hotels/ratings', ratingsDTO).then(response => {
         let temp: RatingsModel[] = this.hotel.ratings;
         temp.push(response.data as RatingsModel);
-        this.hotel.ratings = temp as RatingsModel[];
+        this.hotel.ratings = temp;
         this.rating = this.calculateRatings(temp);
       });
     }

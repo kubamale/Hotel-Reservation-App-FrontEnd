@@ -141,3 +141,8 @@ textarea{
     border-radius: 3px;
     padding: 3px;
 }
+
+.reviewes-header{
+    display: flex;
+}
+

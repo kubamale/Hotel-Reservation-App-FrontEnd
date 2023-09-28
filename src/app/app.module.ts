@@ -27,6 +27,7 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { AmenitieComponent } from './amenitie/amenitie.component';
 import {MatSelectModule} from '@angular/material/select';
 import { OpinionComponent } from './opinion/opinion.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { OpinionComponent } from './opinion/opinion.component';
     LoginPageComponent,
     RegistrationPageComponent,
     AmenitieComponent,
-    OpinionComponent
+    OpinionComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
