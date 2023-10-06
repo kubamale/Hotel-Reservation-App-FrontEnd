@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit{
     if (window.localStorage.getItem('auth_token') !== null) {
       this.isUserLoggedIn = true;
     }
-   this.userService.userLoggedInEmmiter().subscribe(data => {this.isUserLoggedIn = data != null; console.log(data as number);});
+   this.userService.userLoggedInEmmiter().subscribe(data => this.isUserLoggedIn = data);
   }
   public cont: any = countries;
   submit(from: String, to: String) {

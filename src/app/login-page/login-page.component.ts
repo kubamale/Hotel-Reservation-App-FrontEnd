@@ -27,7 +27,7 @@ export class LoginPageComponent implements OnInit {
       this.axiosService.reqest('POST', '/login', this.loginForm.value)
       .then(response => {
         this.axiosService.setAuthToken(response.data.token);
-        this.userService.userLoggedIn(response.data.id);
+        this.userService.userLoggedIn();
         this.router.navigate(['/']);
         window.localStorage.setItem('user', JSON.stringify(response.data.id));
       });

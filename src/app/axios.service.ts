@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from './user.service';
 import axios from 'axios';
 
 @Injectable({
@@ -7,7 +8,7 @@ import axios from 'axios';
 })
 export class AxiosService {
 
-  constructor(private route: Router) { 
+  constructor(private route: Router, private userService: UserService) { 
     axios.defaults.baseURL = 'http://localhost:8080';
     axios.defaults.headers.post['Content-Type'] = 'application/json';
   }
@@ -28,6 +29,7 @@ export class AxiosService {
     }).catch((error) =>{
         if (error.response['status'] == 401){
             this.route.navigate(['/login']);
+            this.userService.userLoggedOut();
           }
     });
   }

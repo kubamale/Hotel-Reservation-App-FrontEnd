@@ -4,14 +4,18 @@ import { Injectable, EventEmitter } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  private userLoggedInEmitter = new EventEmitter<number>();
+  private userLoggedInStatusEmitter = new EventEmitter<boolean>();
   constructor() { }
 
-  userLoggedIn(id: number): void {
-    this.userLoggedInEmitter.emit(id);
+  userLoggedIn(): void {
+    this.userLoggedInStatusEmitter.emit(true);
+  }
+
+  userLoggedOut(): void {
+    this.userLoggedInStatusEmitter.emit(false);
   }
 
   userLoggedInEmmiter(){
-    return this.userLoggedInEmitter;
+    return this.userLoggedInStatusEmitter;
   }
 }

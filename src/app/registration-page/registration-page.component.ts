@@ -28,7 +28,7 @@ export class RegistrationPageComponent {
       console.log(this.registrationForm.valid);
       this.axiosService.reqest('POST', '/register', this.registrationForm.value).then(response => {
         this.axiosService.setAuthToken(response.data.token);
-        this.userService.userLoggedIn(response.data.id);
+        this.userService.userLoggedIn();
         this.router.navigate(['/']);
         window.localStorage.setItem('user', JSON.stringify(response.data.id));
       });
