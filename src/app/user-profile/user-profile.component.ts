@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserService } from '../user.service';
 import { AxiosService } from '../axios.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HotelModel } from 'src/shared/hotel';
 import { UserModel } from 'src/shared/user';
 
@@ -14,6 +14,7 @@ export class UserProfileComponent implements OnInit{
 
   usersHotels: HotelModel[] = [];
   isVisible = false;
+  id!: number;
   user !: UserModel;
   addHotel:HotelModel ={
     id:1,
@@ -32,12 +33,32 @@ export class UserProfileComponent implements OnInit{
     ratings:[]
   }
 
-  constructor( private axios: AxiosService, private router: Router){}
+  constructor( private axios: AxiosService, private router: Router, private route: ActivatedRoute){}
+
+  hotelOwnerScreen = false;
+  adminScreen = false;
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.id = params['id'] as number;
+  });
+
     if (window.localStorage.getItem('user') !== undefined)  {
-      this.axios.reqest('GET', '/hotels/user?id=' + window.localStorage.getItem('user'), {}).then(response =>{ this.usersHotels = response.data as HotelModel[]; this.usersHotels.push(this.addHotel)});
-      this.axios.reqest('GET', '/users?id=' + window.localStorage.getItem('user'), {}).then(response => this.user = response.data as UserModel );
+      this.axios.reqest('GET', '/hotels/user?id=' + this.id, {}).then(response =>{ this.usersHotels = response.data as HotelModel[]; this.usersHotels.push(this.addHotel)});
+      this.axios.reqest('GET', '/users?id=' + this.id, {}).then(response => {
+        this.user = response.data as UserModel;
+        if(response.data.id === this.user.id as unknown as string) {
+          if(window.localStorage.getItem('role') === 'ADMIN'){
+            this.adminScreen = true;
+          }
+          else if(window.localStorage.getItem('role') === 'HOTEL_OWNER'){
+            this.hotelOwnerScreen = true;
+          }
+        } 
+        else if(window.localStorage.getItem('role') === 'ADMIN'){
+          this.adminScreen = true;
+        }
+      } );
     } 
     else{
       this.router.navigate(['/login']);

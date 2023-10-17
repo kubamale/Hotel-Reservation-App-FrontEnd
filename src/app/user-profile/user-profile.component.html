@@ -5,13 +5,17 @@
     </div>
 </div >
 <div class="main-holder">
-    <div class="hotels-tabs">
+    <div *ngIf="user !== undefined">
+        {{user.login}}
+    </div>
+    <div *ngIf="hotelOwnerScreen" class="hotels-tabs">
         <button  *ngFor="let hotel of usersHotels; let i = index" class="hotel" (click)="performAction(hotel)">
             <img [src]="hotel.picURL[0]" class="hotel-pic">
             <h3>{{hotel.name}}</h3>
         </button>
     </div>
-    
+
+    <app-admin-page *ngIf="adminScreen"></app-admin-page>
 
 </div>
 <app-calendar></app-calendar>

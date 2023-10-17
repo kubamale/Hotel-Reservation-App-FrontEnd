@@ -28,6 +28,7 @@ import { AmenitieComponent } from './amenitie/amenitie.component';
 import {MatSelectModule} from '@angular/material/select';
 import { OpinionComponent } from './opinion/opinion.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { CalendarComponent } from './calendar/calendar.component';
     RegistrationPageComponent,
     AmenitieComponent,
     OpinionComponent,
-    CalendarComponent
+    CalendarComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,

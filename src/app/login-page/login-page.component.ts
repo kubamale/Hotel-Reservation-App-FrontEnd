@@ -30,6 +30,7 @@ export class LoginPageComponent implements OnInit {
         this.userService.userLoggedIn();
         this.router.navigate(['/']);
         window.localStorage.setItem('user', JSON.stringify(response.data.id));
+        window.localStorage.setItem('role', response.data.role);
       });
     }
 

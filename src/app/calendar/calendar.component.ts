@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-calendar',
@@ -6,6 +6,8 @@ import { Component, OnInit} from '@angular/core';
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent  implements OnInit{
+  @Input()
+  hotelId!: Number;
   daysToDisplay: number[] = [];
   curentDate: Date = new Date();
   weeksToDisplay!: number;

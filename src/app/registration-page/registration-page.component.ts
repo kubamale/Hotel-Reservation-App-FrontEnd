@@ -31,6 +31,7 @@ export class RegistrationPageComponent {
         this.userService.userLoggedIn();
         this.router.navigate(['/']);
         window.localStorage.setItem('user', JSON.stringify(response.data.id));
+        window.localStorage.setItem('role', JSON.stringify(response.data.role));
       });
     }
 

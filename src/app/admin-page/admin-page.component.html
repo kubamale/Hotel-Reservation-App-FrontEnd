@@ -1,0 +1,3 @@
+<div class="users">
+    <button *ngFor="let user of users" (click)="showProfile(user.id)">{{user.firstName}} {{user.lastName}}, {{user.login}}</button>
+</div>

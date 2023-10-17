@@ -36,6 +36,17 @@ export class NavbarComponent implements OnInit{
   }
 
   navigateTo(page: string): void{
+
+      if(page === '/profile'){
+        let navigationExtras: NavigationExtras = {
+          queryParams: {
+            id: window.localStorage.getItem('user')
+          }
+        }
+        this.router.navigate([page], navigationExtras);
+        return;
+      }
+
       this.router.navigate([page]);
   }
 
